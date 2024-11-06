@@ -1,0 +1,20 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    // Задание 2: Площадь круга
+    double L, R, S;
+
+    cout << "Введите длину окружности: ";
+    cin >> L;
+
+    R = L / (2 * 3.14159); // Радиус
+    S = 3.14159 * R * R; // Площадь
+
+    cout << "Площадь круга: " << S << endl;
+
+    return 0;
+}
+
+
