@@ -1,0 +1,12 @@
+int main() { 
+  double RO, R1, R2, R3;
+  std::cin >> R1 >> R2 >> R3;
+  if (R1 == 0 || R2 == 0 || R3 == 0) {
+    std::cout << "Error\n";
+    return 1;
+}
+
+R0 = 1 / (1 / R1 + 1 / R2 + 1 / R3); 
+std::cout << RO << '\n';
+
+return 0;
