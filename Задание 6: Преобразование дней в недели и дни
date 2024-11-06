@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    // Задание 6: Преобразование дней в недели и дни
+    int days, weeks, remainingDays;
+
+    cout << "Введите количество дней: ";
+    cin >> days;
+
+    weeks = days / 7; // Недели
+    remainingDays = days % 7; // Оставшиеся дни
+
+    cout << "Результат: " << weeks << " недель и " << remainingDays << " дней" << endl;
+
+    return 0;
+}
