@@ -1,0 +1,19 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    // Задание 8: Сумма вклада
+    double deposit, interestRate, monthlyInterest;
+
+    cout << "Введите сумму денежного вклада в евро: ";
+    cin >> deposit;
+    cout << "Введите процент годовых, который выплачивает банк: ";
+    cin >> interestRate;
+
+    monthlyInterest = deposit * (interestRate / 100) / 12; // Ежемесячный процент
+
+    cout << "Сумма денег, выплачиваемых банком вкладчику каждый месяц: " << monthlyInterest << " евро" << endl;
+
+    return 0;
+}
