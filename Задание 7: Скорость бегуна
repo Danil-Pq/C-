@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    // Задание 7: Скорость бегуна
+    double distance, timeInMinutes, timeInSeconds;
+
+    cout << "Calculating running speed." << endl;
+    cout << "Enter the length of distance(meters) = ";
+    cin >> distance;
+    cout << "Enter time(min.sec) = ";
+    cin >> timeInMinutes;
+
+    timeInSeconds = timeInMinutes * 60 + (timeInMinutes - static_cast<int>(timeInMinutes)) * 100;
+
+    cout << "Distance: " << distance << " m" << endl;
+    cout << "Time: " << static_cast<int>(timeInMinutes) << " min " << static_cast<int>(timeInSeconds - static_cast<int>(timeInMinutes) * 60) << " sec = " << timeInSeconds << " seconds" << endl;
+
+    double speed = distance / timeInSeconds * 3.6; // Скорость в км/ч
+    cout << "You were running at speed " << speed << " km/h" << endl;
+
+    return 0;
+}
