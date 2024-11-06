@@ -1,0 +1,19 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    // Задание 5: Преобразование в денежный формат
+    double amount;
+
+    cout << "Введите дробное число: ";
+    cin >> amount;
+
+    int dollars = static_cast<int>(amount); // Целая часть - доллары
+    int cents = static_cast<int>(round((amount - dollars) * 100)); // Дробная часть - центы
+
+    cout << "Денежный формат: " << dollars << " долларов и " << cents << " центов" << endl;
+
+    return 0;
+}
+
