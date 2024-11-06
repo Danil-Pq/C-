@@ -1,0 +1,22 @@
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    // Задание 4: Преобразование секунд
+    int seconds, hours, minutes, remainingSeconds;
+
+    cout << "Введите время в секундах: ";
+    cin >> seconds;
+
+    hours = seconds / 3600; // Часы
+    minutes = (seconds % 3600) / 60; // Минуты
+    remainingSeconds = seconds % 60; // Оставшиеся секунды
+
+    cout << "Время: " << hours << " ч " << minutes << " мин " << remainingSeconds << " с" << endl;
+
+    return 0;
+}
+
+
