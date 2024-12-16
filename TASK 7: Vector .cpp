@@ -127,7 +127,6 @@ int main() {
         while (arr[right] % 2 != 0 && left < right) right--;
 
         if (left < right) {
-            // Обмен значениями
             int temp = arr[left];
             arr[left] = arr[right];
             arr[right] = temp;
