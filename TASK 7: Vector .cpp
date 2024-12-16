@@ -1,146 +1,154 @@
 Задание №1
   
-  #include <iostream>
-using namespace std;
+#include <iostream>
+#include <vector>
+
+std::vector<int> removeDuplicates(const std::vector<int>& nums) {
+    std::vector<int> unique;
+
+    for (int num : nums) {
+        // Проверяем, есть ли элемент уже в векторе уникальных
+        if (std::find(unique.begin(), unique.end(), num) == unique.end()) {
+            unique.push_back(num);
+        }
+    }
+    return unique;
+}
 
 int main() {
-    const int size = 10;
-    int arr[size] = {1, 2, 3, 2, 4, 1, 5, 3, 6, 4};
-    int unique[size];
-    int uniqueCount = 0;
+    std::vector<int> nums = {1, 2, 2, 3, 4, 4, 5};
+    std::vector<int> unique = removeDuplicates(nums);
 
-    for (int i = 0; i < size; ++i) {
-        bool found = false;
-        for (int j = 0; j < uniqueCount; ++j) {
-            if (arr[i] == unique[j]) {
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            unique[uniqueCount++] = arr[i];
-        }
+    for (int num : unique) {
+        std::cout << num << " ";
     }
-
-    cout << "Массив уникальных элементов: ";
-    for (int i = 0; i < uniqueCount; ++i) {
-        cout << unique[i] << " ";
-    }
-    cout <<  '\n';
 
     return 0;
 }
 
-Вывод:
-Массив уникальных элементов: 1 2 3 4 5 6 
+
+Вывод: 1 2 3 4 5  
 
 
-  
 Задание №2
 
 #include <iostream>
-using namespace std;
+#include <vector>
 
-int main() {
-    const int size1 = 5;
-    const int size2 = 5;
-    int arr1[size1] = {1, 3, 5, 7, 9};
-    int arr2[size2] = {2, 4, 6, 8, 10};
-    int merged[size1 + size2];
-    
-    int i = 0, j = 0, k = 0;
+std::vector<int> mergeSortedArrays(const std::vector<int>& arr1, const std::vector<int>& arr2) {
+    std::vector<int> merged;
+    size_t i = 0, j = 0;
 
-    while (i < size1 && j < size2) {
+    while (i < arr1.size() && j < arr2.size()) {
         if (arr1[i] < arr2[j]) {
-            merged[k++] = arr1[i++];
+            merged.push_back(arr1[i]);
+            i++;
         } else {
-            merged[k++] = arr2[j++];
+            merged.push_back(arr2[j]);
+            j++;
         }
     }
 
-    while (i < size1) {
-        merged[k++] = arr1[i++];
+    while (i < arr1.size()) {
+        merged.push_back(arr1[i]);
+        i++;
     }
 
-    while (j < size2) {
-        merged[k++] = arr2[j++];
+    while (j < arr2.size()) {
+        merged.push_back(arr2[j]);
+        j++;
     }
 
-    cout << "Объединенный отсортированный массив: ";
-    for (int i = 0; i < size1 + size2; ++i) {
-        cout << merged[i] << " ";
+    return merged;
+}
+
+int main() {
+    std::vector<int> arr1 = {1, 3, 5};
+    std::vector<int> arr2 = {2, 4, 6};
+    std::vector<int> merged = mergeSortedArrays(arr1, arr2);
+
+    for (int num : merged) {
+        std::cout << num << " ";
     }
-    cout << '\n';
 
     return 0;
 }
 
-Вывод:
-Объединенный отсортированный массив: 1 2 3 4 5 6 7 8 9 10 
+Вывод: 1 2 3 4 5 6  
 
 
+
+Задание 3
+
+
+#include <iostream>
+#include <vector>
+
+int maxSubArraySum(const std::vector<int>& nums) {
+    int max_sum = nums[0];
+    int current_sum = nums[0];
+
+    for (size_t i = 1; i < nums.size(); i++) {
+        if (current_sum + nums[i] > nums[i]) {
+            current_sum += nums[i];
+        } else {
+            current_sum = nums[i];
+        }
+        
+        if (current_sum > max_sum) {
+            max_sum = current_sum;
+        }
+    }
+
+    return max_sum;
+}
+
+int main() {
+    std::vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    int max_sum = maxSubArraySum(nums);
+    std::cout << max_sum ;
+
+    return 0;
+}
+
+
+Вывод: 6
 
   
-Задание №3
+
+Задание 4
+
 
 #include <iostream>
-using namespace std;
+#include <vector>
 
-int main() {
-    const int size = 10;
-    int arr[size] = {-2, 1, -3, 4, -1, 2, 1, -5, 4, -3};
-    
-    int maxSum = arr[0];
-    int currentSum = arr[0];
+void rearrangeEvenOdd(std::vector<int>& nums) {
+    std::vector<int> evens;
+    std::vector<int> odds;
 
-    for (int i = 1; i < size; ++i) {
-        currentSum = max(arr[i], currentSum + arr[i]);
-        maxSum = max(maxSum, currentSum);
-    }
-
-    cout << "Максимальная сумма непрерывного подмассива: " << maxSum << '\n';
-
-    return 0;
-}
-
-
-Вывод:
-Максимальная сумма непрерывного подмассива: 6
-
-
-
- 
-Задание №4
-
-#include <iostream>
-using namespace std;
-
-int main() {
-    const int size = 10;
-    int arr[size] = {3, 1, 4, 2, 5, 7, 6, 8, 9, 0};
-    
-    int left = 0;
-    int right = size - 1;
-
-    while (left < right) {
-        while (arr[left] % 2 == 0 && left < right) left++;
-        while (arr[right] % 2 != 0 && left < right) right--;
-
-        if (left < right) {
-            int temp = arr[left];
-            arr[left] = arr[right];
-            arr[right] = temp;
+    for (int num : nums) {
+        if (num % 2 == 0) {
+            evens.push_back(num);
+        } else {
+            odds.push_back(num);
         }
     }
 
-    cout << "Массив с четными числами перед нечетными: ";
-    for (int i = 0; i < size; ++i) {
-        cout << arr[i] << " ";
+    evens.insert(evens.end(), odds.begin(), odds.end());
+    nums = evens; // Обновляем исходный вектор
+}
+
+int main() {
+    std::vector<int> nums = {1, 2, 3, 4, 5, 6};
+    rearrangeEvenOdd(nums);
+
+    for (int num : nums) {
+        std::cout << num << " ";
     }
-    cout << endl;
 
     return 0;
 }
+ 
+Вывод: 2 4 6 1 3 5  
 
-Вывод:
-Массив с четными числами перед нечетными: 0 8 4 2 6 7 5 1 9 3 
+
