@@ -79,38 +79,31 @@ int main() {
 
 
 #include <iostream>
+#include <string>
 #include <vector>
 
-int maxSubArraySum(const std::vector<int>& nums) {
-    int max_sum = nums[0];
-    int current_sum = nums[0];
-
-    for (size_t i = 1; i < nums.size(); i++) {
-        if (current_sum + nums[i] > nums[i]) {
-            current_sum += nums[i];
-        } else {
-            current_sum = nums[i];
+int main () {
+    std::vector<int> array{10, 100, -50, 5, 10, -10, 11, 100, 20};
+    
+    int max_sum = 0;
+    int cur_sum = 0;
+    
+    for (int i = 1; i < array.size(); ++i) {
+        if (array[i] < 0) {
+            if (cur_sum > max_sum){
+                std::swap(cur_sum, max_sum);
+            }
+            cur_sum = 0;
+            continue;
         }
-        
-        if (current_sum > max_sum) {
-            max_sum = current_sum;
+        else {
+            cur_sum = cur_sum + array [i];
         }
     }
-
-    return max_sum;
+    std::cout << cur_sum << ' ';
 }
 
-int main() {
-    std::vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-    int max_sum = maxSubArraySum(nums);
-    std::cout << max_sum ;
-
-    return 0;
-}
-
-
-Вывод: 6
-
+Вывод: 131 
   
 
 Задание 4
@@ -136,7 +129,7 @@ void rearrangeEvenOdd(std::vector<int>& nums) {
 }
 
 int main() {
-    std::vector<int> nums = {1, 2, 3, 4, 5, 6};
+    std::vector<int> nums = {2, 3, 4, 5, 7, 8, 9};
     rearrangeEvenOdd(nums);
 
     for (int num : nums) {
@@ -145,7 +138,7 @@ int main() {
 
     return 0;
 }
- 
-Вывод: 2 4 6 1 3 5  
+
+Вывод:2 4 8 3 5 7 9 
 
 
