@@ -192,8 +192,44 @@ int main() {
 
 
 
-Задание №5
+Задание №6
 
+
+#include <iostream>
+#include <vector>
+
+void quickSort(std::vector<int>& arr, int left, int right) {
+    if (left < right) {
+        int pivot = arr[right];
+        int i = left - 1;
+        for (int j = left; j < right; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                std::swap(arr[i], arr[j]);
+            }
+        }
+        std::swap(arr[i + 1], arr[right]);
+        int pivotIndex = i + 1;
+        quickSort(arr, left, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, right);
+    }
+}
+
+
+int main() {
+  std::vector<int> numbers = {5, 2, 8, 1, 9, 4, 7, 3, 6};
+    int n = numbers.size();
+    quickSort(numbers, 0, n - 1);
+  std::cout << "Отсортированный массив: ";
+  for(int num : numbers) {
+        std::cout << num << " ";
+  }
+    std::cout << std::endl;
+    return 0;
+}
+
+
+ Вывод:Отсортированный массив: 1 2 3 4 5 6 7 8 9 
 
 
 
