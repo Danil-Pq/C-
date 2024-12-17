@@ -33,50 +33,47 @@ int main() {
 Задание №2
 
 #include <iostream>
+#include <string>
 #include <vector>
 
-std::vector<int> mergeSortedArrays(const std::vector<int>& arr1, const std::vector<int>& arr2) {
-    std::vector<int> merged;
-    size_t i = 0, j = 0;
+int main() {
+    std::vector<int> array_l {1, 4, 7};
+    std::vector<int> array_r {2, 5, 9};
 
-    while (i < arr1.size() && j < arr2.size()) {
-        if (arr1[i] < arr2[j]) {
-            merged.push_back(arr1[i]);
-            i++;
+    std::vector<int> result;
+    
+    int p_l = 0;
+    int p_r = 0;
+    
+    while (p_l < array_l.size() && p_r < array_r.size()) {
+        if (array_l[p_l] < array_r[p_r]) {
+            result.push_back(array_l[p_l]);
+            p_l++;
         } else {
-            merged.push_back(arr2[j]);
-            j++;
+            result.push_back(array_r[p_r]);
+            p_r++;   
         }
     }
-
-    while (i < arr1.size()) {
-        merged.push_back(arr1[i]);
-        i++;
+    
+    while (p_l < array_l.size()) {
+        result.push_back(array_l[p_l]);
+        p_l++;
     }
-
-    while (j < arr2.size()) {
-        merged.push_back(arr2[j]);
-        j++;
+    
+    while (p_r < array_r.size()) {
+        result.push_back(array_r[p_r]);
+        p_r++;
     }
-
-    return merged;
+    
+    for (int i = 0; i < result.size(); ++i) {
+        std::cout << result[i] << ' ';
+    }
 }
 
-int main() {
-    std::vector<int> arr1 = {1, 3, 5};
-    std::vector<int> arr2 = {2, 4, 6};
-    std::vector<int> merged = mergeSortedArrays(arr1, arr2);
-
-    for (int num : merged) {
-        std::cout << num << " ";
-    }
-
-    return 0;
-}
-
-Вывод: 1 2 3 4 5 6  
+Вывод: 1 2 4 5 7 9 
 
 
+  
 
 Задание 3
 
